@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="420" viewBox="0 0 960 420" role="img" aria-labelledby="title desc">
+  <title id="title">Başparmak yukarı ve başparmak aşağı hareket rehberi</title>
+  <desc id="desc">Avuç içi kameraya dönükken başparmak yukarı ve başparmak aşağı pozlarını gösteren basit rehber.</desc>
+  <rect width="960" height="420" fill="#f8fafc" />
+  <text x="480" y="44" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="700" fill="#0f172a">
+    El jesti rehberi
+  </text>
+  <text x="480" y="76" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="18" fill="#334155">
+    Avuç için kameraya bakacak, diğer parmaklar kapalı olacak
+  </text>
+
+  <rect x="52" y="110" width="396" height="266" rx="28" fill="#ecfccb" stroke="#84cc16" stroke-width="2" />
+  <rect x="512" y="110" width="396" height="266" rx="28" fill="#fee2e2" stroke="#ef4444" stroke-width="2" />
+
+  <text x="250" y="150" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="26" font-weight="700" fill="#365314">
+    Başparmak Yukarı
+  </text>
+  <text x="250" y="178" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="16" fill="#3f6212">
+    Ses artırma için uygun poz
+  </text>
+
+  <text x="710" y="150" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="26" font-weight="700" fill="#7f1d1d">
+    Başparmak Aşağı
+  </text>
+  <text x="710" y="178" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="16" fill="#991b1b">
+    Ses azaltma için uygun poz
+  </text>
+
+  <g transform="translate(110 84)">
+    <rect x="54" y="120" width="126" height="120" rx="34" fill="#0f172a" />
+    <rect x="142" y="42" width="38" height="106" rx="18" fill="#0f172a" />
+    <rect x="60" y="104" width="24" height="38" rx="12" fill="#0f172a" />
+    <rect x="92" y="100" width="24" height="42" rx="12" fill="#0f172a" />
+    <rect x="124" y="100" width="24" height="42" rx="12" fill="#0f172a" />
+    <rect x="156" y="104" width="20" height="38" rx="10" fill="#0f172a" />
+    <rect x="28" y="144" width="42" height="98" rx="20" fill="#0f172a" />
+    <line x1="208" y1="110" x2="264" y2="110" stroke="#65a30d" stroke-width="10" stroke-linecap="round" />
+    <polygon points="264,110 236,94 236,126" fill="#65a30d" />
+    <text x="276" y="116" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="700" fill="#365314">
+      Başparmak yukarı
+    </text>
+  </g>
+
+  <g transform="translate(570 84)">
+    <rect x="54" y="120" width="126" height="120" rx="34" fill="#0f172a" />
+    <rect x="142" y="212" width="38" height="106" rx="18" fill="#0f172a" />
+    <rect x="60" y="104" width="24" height="38" rx="12" fill="#0f172a" />
+    <rect x="92" y="100" width="24" height="42" rx="12" fill="#0f172a" />
+    <rect x="124" y="100" width="24" height="42" rx="12" fill="#0f172a" />
+    <rect x="156" y="104" width="20" height="38" rx="10" fill="#0f172a" />
+    <rect x="28" y="144" width="42" height="98" rx="20" fill="#0f172a" />
+    <line x1="208" y1="230" x2="264" y2="230" stroke="#dc2626" stroke-width="10" stroke-linecap="round" />
+    <polygon points="264,230 236,214 236,246" fill="#dc2626" />
+    <text x="276" y="236" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="700" fill="#7f1d1d">
+      Başparmak aşağı
+    </text>
+  </g>
+
+  <text x="480" y="398" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="16" fill="#475569">
+    Özet: Avuç görünecek, dört parmak kapalı olacak, sadece başparmak yön verecek.
+  </text>
+</svg>

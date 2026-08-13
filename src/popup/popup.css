@@ -1,0 +1,408 @@
+:root {
+  color-scheme: light;
+  --bg: #f7f7f4;
+  --panel: #ffffff;
+  --panel-soft: #f3f4f1;
+  --border: #dfe3dd;
+  --text: #18221d;
+  --muted: #66736c;
+  --soft: #8a958f;
+  --accent: #0f766e;
+  --accent-strong: #115e59;
+  --media-blue: #1557b8;
+  --media-blue-soft: #eaf2ff;
+  --danger: #b42318;
+  --focus: rgba(15, 118, 110, 0.22);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  width: 380px;
+  min-height: 620px;
+  font-family: Inter, "Segoe UI", system-ui, -apple-system, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+}
+
+button,
+select,
+input {
+  font: inherit;
+}
+
+button:focus-visible,
+select:focus-visible,
+summary:focus-visible,
+input:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.popup-shell {
+  display: grid;
+  gap: 10px;
+  padding: 12px;
+}
+
+.topbar,
+.power-card,
+.guide-card,
+.activity-card,
+.settings-card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.topbar {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px;
+}
+
+.eyebrow,
+.label {
+  margin: 0;
+  color: var(--soft);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.topbar h1 {
+  margin: 4px 0 0;
+  font-size: 22px;
+  line-height: 1.12;
+  letter-spacing: 0;
+}
+
+.status-chip {
+  align-self: center;
+  min-width: 96px;
+  border-radius: 999px;
+  padding: 7px 10px;
+  background: #e9f5f2;
+  color: var(--accent-strong);
+  font-size: 12px;
+  font-weight: 700;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.power-card {
+  padding: 14px;
+}
+
+.target-label,
+.runtime-message,
+.metric-card p,
+.settings-card summary {
+  margin: 0;
+  color: var(--muted);
+}
+
+.target-label {
+  min-height: 36px;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.power-button {
+  width: 100%;
+  display: grid;
+  gap: 6px;
+  margin-top: 10px;
+  padding: 16px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  color: #ffffff;
+  cursor: pointer;
+  background: var(--accent);
+  text-align: left;
+  transition:
+    background 140ms ease,
+    border-color 140ms ease,
+    transform 140ms ease;
+}
+
+.power-button:hover {
+  background: var(--accent-strong);
+  transform: translateY(-1px);
+}
+
+.power-button:disabled {
+  cursor: progress;
+  opacity: 0.72;
+  transform: none;
+}
+
+.power-button.is-active {
+  background: #1f2937;
+}
+
+.power-button.is-error {
+  background: var(--danger);
+}
+
+.power-title {
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: 0;
+}
+
+.power-hint {
+  max-width: 300px;
+  font-size: 13px;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.84);
+}
+
+.runtime-message {
+  margin-top: 10px;
+  min-height: 40px;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.metric-grid {
+  display: grid;
+  gap: 0;
+  margin-top: 8px;
+  border-top: 1px solid var(--border);
+}
+
+.metric-card {
+  display: grid;
+  grid-template-columns: 74px 1fr;
+  gap: 4px 10px;
+  padding: 11px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.metric-card:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.metric-card .label {
+  grid-row: span 2;
+  padding-top: 2px;
+}
+
+.metric-card strong {
+  display: block;
+  min-width: 0;
+  font-size: 14px;
+  line-height: 1.25;
+}
+
+.metric-card p {
+  min-width: 0;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.guide-card,
+.activity-card,
+.settings-card {
+  padding: 14px;
+}
+
+.guide-card {
+  display: grid;
+  gap: 12px;
+}
+
+.guide-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.guide-card h2 {
+  margin: 4px 0 0;
+  font-size: 16px;
+  line-height: 1.2;
+  letter-spacing: 0;
+}
+
+.guide-count {
+  flex: 0 0 auto;
+  border-radius: 999px;
+  padding: 6px 9px;
+  color: var(--media-blue);
+  background: var(--media-blue-soft);
+  font-size: 12px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.gesture-list {
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.gesture-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 18px minmax(0, 1fr);
+  align-items: center;
+  gap: 10px;
+  min-height: 54px;
+  padding: 9px 12px;
+  border-bottom: 1px solid var(--border);
+  background: var(--panel);
+}
+
+.gesture-row:last-child {
+  border-bottom: 0;
+}
+
+.guide-arrow {
+  color: var(--media-blue);
+  font-size: 18px;
+  font-weight: 900;
+  line-height: 1;
+  text-align: center;
+}
+
+.gesture-copy,
+.action-copy {
+  min-width: 0;
+  display: grid;
+  gap: 2px;
+}
+
+.gesture-copy strong,
+.action-copy strong {
+  min-width: 0;
+  font-size: 12px;
+  line-height: 1.25;
+}
+
+.gesture-copy span,
+.action-copy span {
+  min-width: 0;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.25;
+}
+
+.action-copy span {
+  color: var(--media-blue);
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 10px;
+  overflow-wrap: anywhere;
+}
+
+.guide-note {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.activity-card {
+  display: grid;
+  gap: 0;
+}
+
+.activity-row {
+  display: grid;
+  grid-template-columns: 1fr minmax(96px, auto);
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.activity-row:first-child {
+  padding-top: 0;
+}
+
+.activity-row:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.activity-row span {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.activity-row strong {
+  min-width: 0;
+  text-align: right;
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+.settings-card summary {
+  cursor: pointer;
+  list-style: none;
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.settings-card summary::-webkit-details-marker {
+  display: none;
+}
+
+.settings-grid {
+  display: grid;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.field,
+.toggle-field {
+  display: grid;
+  gap: 6px;
+}
+
+.field span,
+.toggle-field span {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+.field select {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--panel);
+  color: var(--text);
+  padding: 10px 11px;
+}
+
+.field select:disabled {
+  background: var(--panel-soft);
+  color: var(--soft);
+}
+
+.toggle-field {
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--panel-soft);
+  padding: 10px 11px;
+}
+
+.toggle-field input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--accent);
+}

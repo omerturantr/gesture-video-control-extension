@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>GestureFlow Kamera</title>
+    <link rel="stylesheet" href="./camera-permission.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <p class="eyebrow">GestureFlow</p>
+      <h1>Kamera kontrolü</h1>
+      <p id="status" class="status" role="status" aria-live="polite">
+        Kamera kontrolü açılıyor.
+      </p>
+      <button id="allow-camera" class="allow-button" type="button">Kamerayı başlat</button>
+      <p class="hint">
+        Kamera başladıktan sonra video sekmenize dönebilirsiniz. GestureFlow çalışırken bu sekmeyi
+        açık bırakın.
+      </p>
+    </main>
+
+    <script type="module" src="./camera-permission.js"></script>
+  </body>
+</html>

@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>GestureFlow Kontrol</title>
+    <link rel="stylesheet" href="./popup.css" />
+  </head>
+  <body>
+    <main class="popup-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">GestureFlow</p>
+          <h1>Video kontrolü</h1>
+        </div>
+        <span id="camera-chip" class="status-chip" role="status" aria-live="polite">Kamera</span>
+      </header>
+
+      <section class="power-card">
+        <p id="target-label" class="target-label" role="status" aria-live="polite">Geçerli sekme kontrol ediliyor</p>
+        <button id="toggle-session" class="power-button" type="button" aria-pressed="false">
+          <span id="toggle-label" class="power-title">Başlat</span>
+          <span id="toggle-hint" class="power-hint">Kamera yerel çalışır ve bu pencere kapansa da devam eder.</span>
+        </button>
+        <p id="runtime-message" class="runtime-message" role="status" aria-live="polite">Kontrol hazırlanıyor.</p>
+
+        <div class="metric-grid">
+          <article class="metric-card">
+            <span class="label">Video</span>
+            <strong id="video-status" role="status" aria-live="polite">Kontrol ediliyor</strong>
+            <p id="video-detail">Sekmede oynatıcı aranıyor.</p>
+          </article>
+          <article class="metric-card">
+            <span class="label">Bakış</span>
+            <strong id="attention-status" role="status" aria-live="polite">Kontrol ediliyor</strong>
+            <p id="attention-detail">Yüz takibi beklemede.</p>
+          </article>
+          <article class="metric-card">
+            <span class="label">Gözler</span>
+            <strong id="eyes-status" role="status" aria-live="polite">Kontrol ediliyor</strong>
+            <p id="eyes-detail">Göz takibi beklemede.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="guide-card" aria-labelledby="gesture-guide-title">
+        <div class="guide-header">
+          <div>
+            <p class="eyebrow">Hızlı rehber</p>
+            <h2 id="gesture-guide-title">Hareket komutları</h2>
+          </div>
+          <span class="guide-count">6 komut</span>
+        </div>
+
+        <div class="gesture-list" aria-label="El hareketi ve video komutu eşleşmeleri">
+          <article class="gesture-row">
+            <div class="gesture-copy">
+              <strong>Açık avuç</strong>
+              <span>Avucun kameraya baksın.</span>
+            </div>
+            <span class="guide-arrow" aria-hidden="true">&rarr;</span>
+            <div class="action-copy">
+              <strong>Oynat</strong>
+              <span>PLAY</span>
+            </div>
+          </article>
+
+          <article class="gesture-row">
+            <div class="gesture-copy">
+              <strong>Kapalı yumruk</strong>
+              <span>Parmakları kapat.</span>
+            </div>
+            <span class="guide-arrow" aria-hidden="true">&rarr;</span>
+            <div class="action-copy">
+              <strong>Duraklat</strong>
+              <span>PAUSE</span>
+            </div>
+          </article>
+
+          <article class="gesture-row">
+            <div class="gesture-copy">
+              <strong>Başparmak sağa</strong>
+              <span>Basılı tut.</span>
+            </div>
+            <span class="guide-arrow" aria-hidden="true">&rarr;</span>
+            <div class="action-copy">
+              <strong>İleri sar</strong>
+              <span>SEEK_FORWARD</span>
+            </div>
+          </article>
+
+          <article class="gesture-row">
+            <div class="gesture-copy">
+              <strong>Başparmak sola</strong>
+              <span>Basılı tut.</span>
+            </div>
+            <span class="guide-arrow" aria-hidden="true">&rarr;</span>
+            <div class="action-copy">
+              <strong>Geri sar</strong>
+              <span>SEEK_BACKWARD</span>
+            </div>
+          </article>
+
+          <article class="gesture-row">
+            <div class="gesture-copy">
+              <strong>Başparmak yukarı</strong>
+              <span>Basılı tut.</span>
+            </div>
+            <span class="guide-arrow" aria-hidden="true">&rarr;</span>
+            <div class="action-copy">
+              <strong>Sesi artır</strong>
+              <span>VOLUME_UP</span>
+            </div>
+          </article>
+
+          <article class="gesture-row">
+            <div class="gesture-copy">
+              <strong>Başparmak aşağı</strong>
+              <span>Basılı tut.</span>
+            </div>
+            <span class="guide-arrow" aria-hidden="true">&rarr;</span>
+            <div class="action-copy">
+              <strong>Sesi azalt</strong>
+              <span>VOLUME_DOWN</span>
+            </div>
+          </article>
+        </div>
+
+        <p class="guide-note">
+          Başparmak komutlarında diğer parmaklar kapalı kalırsa algılama daha kararlı olur.
+        </p>
+      </section>
+
+      <section class="activity-card">
+        <div class="activity-row">
+          <span>Algılanan hareket</span>
+          <strong id="current-gesture" role="status" aria-live="polite">Boşta</strong>
+        </div>
+        <div class="activity-row">
+          <span>Etkin işlem</span>
+          <strong id="current-action" role="status" aria-live="polite">Boşta</strong>
+        </div>
+        <div class="activity-row">
+          <span>Son komut</span>
+          <strong id="last-command" role="status" aria-live="polite">Yok</strong>
+        </div>
+      </section>
+
+      <details class="settings-card">
+        <summary>Ayarlar</summary>
+        <div class="settings-grid">
+          <label class="field">
+            <span>Sarma aralığı</span>
+            <select id="seek-seconds">
+              <option value="5">5 saniye</option>
+              <option value="10">10 saniye</option>
+              <option value="15">15 saniye</option>
+              <option value="30">30 saniye</option>
+            </select>
+          </label>
+
+          <label class="field">
+            <span>Ses aralığı</span>
+            <select id="volume-step">
+              <option value="4">4%</option>
+              <option value="6">6%</option>
+              <option value="8">8%</option>
+              <option value="10">10%</option>
+              <option value="15">15%</option>
+            </select>
+          </label>
+
+          <label class="field">
+            <span>Basılı tutma ivmesi</span>
+            <select id="hold-acceleration">
+              <option value="15">15%</option>
+              <option value="25">25%</option>
+              <option value="35">35%</option>
+              <option value="50">50%</option>
+              <option value="75">75%</option>
+            </select>
+          </label>
+
+          <label class="field">
+            <span>El hassasiyeti</span>
+            <select id="sensitivity">
+              <option value="relaxed">Rahat</option>
+              <option value="balanced">Dengeli</option>
+              <option value="responsive">Duyarlı</option>
+            </select>
+          </label>
+
+          <label class="toggle-field">
+            <span>Ekrandan uzaklaşınca duraklat</span>
+            <input id="attention-enabled" type="checkbox" />
+          </label>
+
+          <label class="field">
+            <span>Bakış zaman aşımı</span>
+            <select id="attention-timeout">
+              <option value="1.5">1.5 saniye</option>
+              <option value="2">2 saniye</option>
+              <option value="2.5">2.5 saniye</option>
+              <option value="3">3 saniye</option>
+              <option value="4">4 saniye</option>
+              <option value="5">5 saniye</option>
+              <option value="7">7 saniye</option>
+            </select>
+          </label>
+
+          <label class="toggle-field">
+            <span>Gözler kapanınca duraklat</span>
+            <input id="eyes-enabled" type="checkbox" />
+          </label>
+
+          <label class="field">
+            <span>Göz kapanma zaman aşımı</span>
+            <select id="eyes-timeout">
+              <option value="1.5">1.5 saniye</option>
+              <option value="2">2 saniye</option>
+              <option value="2.5">2.5 saniye</option>
+              <option value="3">3 saniye</option>
+              <option value="4">4 saniye</option>
+              <option value="5">5 saniye</option>
+              <option value="7">7 saniye</option>
+            </select>
+          </label>
+
+          <label class="toggle-field">
+            <span>Sınıflandırıcı hata ayıklama</span>
+            <input id="debug-classifier" type="checkbox" />
+          </label>
+        </div>
+      </details>
+    </main>
+
+    <script type="module" src="./popup.js"></script>
+  </body>
+</html>
